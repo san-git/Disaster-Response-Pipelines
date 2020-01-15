@@ -44,4 +44,5 @@ This project requires file:
 3. Go to http://0.0.0.0:3001/
 
 # Licensing, Authors, Acknowledgements, Authors, Acknowledgements
+Data is provided by Figure Eight.
 
