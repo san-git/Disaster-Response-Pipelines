@@ -54,7 +54,7 @@ def index():
     # create visuals
     # TODO: Below is an example - modify to create your own visuals
     graphs = [
-            # GRAPH 1 - genre graph
+            # GRAPH 1 - source graph
         {
             'data': [
                 Bar(
@@ -64,12 +64,12 @@ def index():
             ],
 
             'layout': {
-                'title': 'Distribution of Message Genres',
+                'title': 'Distribution of source of Messages',
                 'yaxis': {
                     'title': "Count"
                 },
                 'xaxis': {
-                    'title': "Genre"
+                    'title': "Source"
                 }
             }
         },
@@ -83,7 +83,7 @@ def index():
             ],
 
             'layout': {
-                'title': 'Distribution of Message Categories',
+                'title': 'Categories of Message',
                 'yaxis': {
                     'title': "Count"
                 },
