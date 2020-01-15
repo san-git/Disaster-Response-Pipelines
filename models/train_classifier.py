@@ -28,6 +28,8 @@ from sklearn.model_selection import GridSearchCV
 
 
 def load_data(database_filepath):
+    ''' input: SQL file
+        return: X for independent var and y for dependent var '''
 
     engine = create_engine('sqlite:///'+database_filepath)
     df = pd.read_sql_table('DisasterResponse', con=engine)
@@ -38,6 +40,9 @@ def load_data(database_filepath):
 
 
 def tokenize(text):
+    '''Input: unstructured text data
+       return: tokens and lemmatization generated from the text '''
+
     url_regex = 'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
     detected_urls = re.findall(url_regex , text)
     for url in detected_urls:
@@ -62,6 +67,10 @@ def tokenize(text):
 
 
 def build_model():
+
+    ''' inout : a pipeline model 
+        return: GridSearchCV pipeline'''
+
     pipeline = Pipeline([
         ('vect', CountVectorizer(tokenizer = tokenize)),
         ('tfidf', TfidfTransformer()),
@@ -81,6 +90,10 @@ def build_model():
 
 
 def evaluate_model(model, X_test, y_test, category_names):
+
+    '''input: ML model and test data
+       return: Model evaluation report'''
+       
     y_pred = model.predict(X_test)
     class_report = classification_report(y_test, y_pred, target_names=category_names)
     print(class_report)
